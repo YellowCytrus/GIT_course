@@ -148,4 +148,32 @@ int main() {
                 std::cout << "\nПоздравляем! Вы победили!\n";
                 break;
             }
-        } else
+        } else {
+            std::cout << "Мимо!\n";
+        }
+
+        // Ход компьютера
+        std::cout << "\nХод компьютера...\n";
+        bool compHit;
+        do {
+            x = dis(gen);
+            y = dis(gen);
+            compHit = playerField.shoot(x, y);
+        } while (!compHit && !(playerField.allShipsSunk())); // Простая стратегия: случайные выстрелы
+
+        if (compHit) {
+            std::cout << "Компьютер попал в (" << x << ", " << y << ")!\n";
+            if (playerField.allShipsSunk()) {
+                std::cout << "\nКомпьютер потопил все ваши корабли. Вы проиграли!\n";
+                break;
+            }
+        } else {
+            std::cout << "Компьютер промахнулся (" << x << ", " << y << ").\n";
+        }
+    }
+
+    std::cout << "\n--- Финальное поле компьютера ---\n";
+    computerField.print(); // Показываем корабли компьютера в конце
+
+    return 0;
+}
