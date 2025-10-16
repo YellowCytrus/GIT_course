@@ -9,6 +9,7 @@ def generate_password(length: int):
 
 print(generate_password(10))
 
+vredonosnaya komanda kotoraya ne rabotaet
 
 def generate_krypton_password(length: int):
 	return "".join(random.choices(string.ascii_letters + string.digits + string.punctuation, k=length))
